@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink: #0a0908;
+  --color-ink-2: #14110f;
+  --color-cream: #faf6ee;
+  --color-cream-dim: rgba(250, 246, 238, 0.72);
+  --color-red: #c1272d;
+  --color-red-deep: #8e1a1f;
+  --color-red-glow: #d23545;
+  --color-red-soft: #e25058;
+  --color-ember: #ff8a5c;
+  --color-gold: #d4a76a;
+  --color-glass: rgba(20, 17, 15, 0.55);
+  --color-glass-border: rgba(250, 246, 238, 0.12);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-red);
+  color: var(--color-cream);
+}
+
+/* Background image — desktop default + mobile-specific positioning */
+.bg-vegetal {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 92%;
+}
+@media (max-width: 768px) {
+  .bg-vegetal {
+    /* Mobile: cover with very slight reduction + upward shift */
+    inset: auto;
+    top: -2%;
+    left: 0;
+    width: 100%;
+    height: 88%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+}
+
+
+/* Neon SAIGON flicker glow — positioned on the sign in the bg image */
+.neon-glow {
+  position: absolute;
+  top: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 78vw;
+  max-width: 920px;
+  height: 26vh;
+  background:
+    /* Inner tight glow — warmer, brighter */
+    radial-gradient(ellipse 32% 45% at 50% 50%, rgba(255, 140, 90, 0.35), transparent 60%),
+    /* Outer ambient halo — soft red-orange wash */
+    radial-gradient(ellipse 75% 85% at 50% 50%, rgba(255, 100, 60, 0.18), transparent 75%);
+  mix-blend-mode: screen;
+  filter: blur(8px);
+  animation: neonFlicker 7s infinite;
+  will-change: opacity;
+}
+@keyframes neonFlicker {
+  /* breathing pulse */
+  0%, 100% { opacity: 0.95; }
+  15%      { opacity: 1; }
+  30%      { opacity: 0.78; }
+  45%      { opacity: 0.92; }
+  /* flicker burst 1 — around 60% */
+  60.0%    { opacity: 1; }
+  60.15%   { opacity: 0.18; }
+  60.30%   { opacity: 0.95; }
+  60.50%   { opacity: 0.30; }
+  60.65%   { opacity: 1; }
+  /* steady */
+  75%      { opacity: 0.86; }
+  /* flicker burst 2 — around 88%, more pronounced */
+  88.0%    { opacity: 0.95; }
+  88.15%   { opacity: 0.10; }
+  88.35%   { opacity: 0.92; }
+  88.55%   { opacity: 0.20; }
+  88.75%   { opacity: 0.85; }
+  88.95%   { opacity: 0.35; }
+  89.15%   { opacity: 1; }
+}
+
+/* Glass card with animated shimmer border */
+.glass-card {
+  position: relative;
+  background: rgba(20, 17, 15, 0.45);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(250, 246, 238, 0.10);
+  overflow: hidden;
+}
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 107, 53, 0.55) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmerBorder 7s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.glass-card-2::before { animation-delay: -2.3s; }
+.glass-card-3::before { animation-delay: -4.6s; }
+@keyframes shimmerBorder {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Floating embers (rising sparks) */
+.ember {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: emberRise linear 1 forwards;
+  --drift: 0px;
+  will-change: transform, opacity;
+}
+@keyframes emberRise {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  8%   { opacity: 0.7; }
+  60%  { opacity: 0.45; }
+  90%  { opacity: 0.18; }
+  100% { transform: translate(var(--drift), -110vh); opacity: 0; }
+}
+
+/* Pulsing live dot */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.85); }
+}
+.pulse-dot { animation: pulse 1.4s infinite; }
+
+/* Reveal on scroll (simple) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot, .fade-up, .neon-glow, .ember, .glass-card::before { animation: none; }
 }
