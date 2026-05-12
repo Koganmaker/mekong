@@ -58,12 +58,12 @@ export const menu: MenuCategory[] = [
 ];
 
 export const contact = {
-  phone: "05 58 78 06 07",
-  phoneHref: "tel:0558780607",
+  phone: "01 23 45 67 89",
+  phoneHref: "tel:0123456789",
   description: "Vente à emporter",
   address: {
-    line1: "639 avenue de la République",
-    line2: "40600 Biscarrosse",
+    line1: "1 rue de l'Exemple",
+    line2: "00000 Ville",
   },
-  hours: "Mardi → Dimanche · 18h — 21h30",
+  hours: "Mardi → Dimanche · 12h — 14h · 18h — 21h30",
 };

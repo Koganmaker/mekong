@@ -62,7 +62,7 @@ body {
 }
 
 
-/* Neon SAIGON flicker glow — positioned on the sign in the bg image */
+/* Neon flicker glow — positioned on the sign in the bg image */
 .neon-glow {
   position: absolute;
   top: 8vh;

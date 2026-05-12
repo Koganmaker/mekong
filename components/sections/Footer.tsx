@@ -8,10 +8,10 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2.5">
             <span className="w-2 h-2 rounded-full bg-red shadow-[0_0_14px_var(--color-red)]" />
-            <span className="font-serif italic text-2xl md:text-3xl">Saigon</span>
+            <span className="font-serif italic text-2xl md:text-3xl">Mékong</span>
           </div>
           <p className="text-cream-dim text-sm mt-3 max-w-sm">
-            Cuisine vietnamienne · Biscarrosse · Vente à emporter
+            Cuisine vietnamienne · Vente à emporter
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 text-sm">
@@ -21,7 +21,7 @@ export function Footer() {
           >
             {contact.phone}
           </a>
-          <span className="text-cream-dim">© {year} Saigon</span>
+          <span className="text-cream-dim">© {year} Mékong</span>
         </div>
       </div>
     </footer>

@@ -3,13 +3,13 @@ import { contact } from "@/lib/menu";
 export function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 grid grid-cols-3 items-center px-4 md:px-8 py-3.5 md:py-4 bg-ink/[0.03] backdrop-blur-md border-b border-cream/[0.04]">
-      {/* Left: Saigon brand in Fraunces italic (same as hero signature) */}
+      {/* Left: brand in Fraunces italic (same as hero signature) */}
       <div className="flex items-center">
         <a
           href="#"
           className="font-serif italic text-xl md:text-2xl tracking-[-0.01em] text-cream hover:text-red-glow transition-colors"
         >
-          Saigon
+          Mékong
         </a>
       </div>
 

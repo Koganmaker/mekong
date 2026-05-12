@@ -16,9 +16,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Saigon — Cuisine vietnamienne · Biscarrosse",
+  title: "Mékong — Cuisine vietnamienne",
   description:
-    "Saigon, restaurant vietnamien à Biscarrosse. Nems, bo bun, raviolis vapeur, rouleaux de printemps faits maison. Vente à emporter. 05 58 78 06 07.",
+    "Mékong, restaurant vietnamien. Nems, bo bun, raviolis vapeur, rouleaux de printemps faits maison. Vente à emporter. 01 23 45 67 89.",
 };
 
 export const viewport: Viewport = {
@@ -39,11 +39,11 @@ export default function RootLayout({
         {/* Global atmospheric background — image fixed (no movement) */}
         <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none" aria-hidden="true">
           <img
-            src="/photos/bg-vegetal.jpg"
+            src="/photos/bg-restaurant.png"
             alt=""
             className="bg-vegetal"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/60 to-black/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70" />
         </div>
         {/* Neon flicker + embers */}
         <Atmosphere />

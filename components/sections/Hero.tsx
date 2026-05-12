@@ -20,7 +20,7 @@ export function Hero() {
           ici, <em className="text-red-glow font-medium italic">comme là-bas.</em>
         </h1>
         <p className="font-serif italic text-2xl md:text-3xl text-cream/90 mt-5 tracking-[-0.01em]">
-          — Saigon
+          — Mékong
         </p>
         <p className="text-xs md:text-sm uppercase tracking-[0.28em] text-cream mt-10">
           {contact.hours}
