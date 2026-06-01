@@ -14,10 +14,10 @@ export function Hero() {
 
       {/* Stack: headline + signature + hours, tightly grouped */}
       <div className="text-center fade-up max-w-[920px] mx-auto">
-        <h1 className="font-serif font-normal text-[clamp(40px,7.5vw,104px)] leading-[0.98] tracking-[-0.025em]">
+        <h1 className="font-serif font-normal text-[clamp(36px,7vw,94px)] leading-[0.98] tracking-[-0.025em]">
           La cuisine d'Asie,
           <br />
-          ici, <em className="text-red-glow font-medium italic">comme là-bas.</em>
+          ici, <em className="text-cream font-medium italic">comme là-bas</em>
         </h1>
         <p className="font-serif italic text-2xl md:text-3xl text-cream/90 mt-5 tracking-[-0.01em]">
           — Mékong

@@ -4,17 +4,17 @@ export function Visit() {
   return (
     <section className="relative pt-2 md:pt-4 pb-16 md:pb-24 px-5 md:px-10">
       <div className="max-w-[1200px] mx-auto">
-        <div className="mb-12 md:mb-16 text-center">
+        <div className="mb-12 md:mb-16 text-center" data-reveal>
           <span className="text-xs uppercase tracking-[0.2em] text-cream-dim">
             Passez nous voir
           </span>
-          <h2 className="font-serif text-[clamp(36px,5.5vw,68px)] leading-[1] tracking-[-0.02em] mt-4">
-            On s'en <em className="text-red-glow font-medium italic">occupe.</em>
+          <h2 className="font-serif text-[clamp(32px,5vw,60px)] leading-[1] tracking-[-0.02em] mt-4">
+            On s'en <em className="text-cream font-medium italic">occupe</em>
           </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-          <article className="glass-card p-8 md:p-10 text-center">
+          <article className="glass-card p-8 md:p-10 text-center" data-reveal>
             <span className="text-[11px] uppercase tracking-[0.22em] text-cream-dim">
               Téléphone
             </span>
@@ -29,7 +29,11 @@ export function Visit() {
             </p>
           </article>
 
-          <article className="glass-card glass-card-2 p-8 md:p-10 text-center">
+          <article
+            className="glass-card glass-card-2 p-8 md:p-10 text-center"
+            data-reveal
+            style={{ "--reveal-delay": "110ms" } as React.CSSProperties}
+          >
             <span className="text-[11px] uppercase tracking-[0.22em] text-cream-dim">
               Service
             </span>
@@ -39,11 +43,15 @@ export function Visit() {
               <span className="text-cream-dim">ou à emporter</span>
             </p>
             <p className="text-cream-dim text-sm mt-5 leading-relaxed">
-              Quelques places en salle. Sinon on vous prépare tout pour partir.
+              Quelques places en salle. Sinon on vous prépare tout pour partir
             </p>
           </article>
 
-          <article className="glass-card glass-card-3 p-8 md:p-10 text-center">
+          <article
+            className="glass-card glass-card-3 p-8 md:p-10 text-center"
+            data-reveal
+            style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
+          >
             <span className="text-[11px] uppercase tracking-[0.22em] text-cream-dim">
               Adresse
             </span>
@@ -53,7 +61,7 @@ export function Visit() {
               <span className="text-cream-dim">{contact.address.line2}</span>
             </p>
             <p className="text-cream-dim text-sm mt-5 leading-relaxed">
-              On vous attend au coin de la rue.
+              On vous attend au coin de la rue
             </p>
           </article>
         </div>

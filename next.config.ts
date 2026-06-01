@@ -14,7 +14,10 @@ const csp = [
   "base-uri 'self'",
   "form-action 'self'",
   "object-src 'none'",
-  "upgrade-insecure-requests",
+  // Only force HTTPS upgrades in production. In dev the site is served over
+  // plain HTTP on localhost; Safari (unlike Chrome) honours this even for
+  // localhost and fails to load CSS/JS, leaving the page unstyled.
+  ...(isDev ? [] : ["upgrade-insecure-requests"]),
 ].join("; ");
 
 const securityHeaders = [
@@ -22,7 +25,11 @@ const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
-  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+  // HSTS only in production. Safari persists HSTS even for localhost, which
+  // would force every future http://localhost request to https and break dev.
+  ...(isDev
+    ? []
+    : [{ key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" }]),
   { key: "Content-Security-Policy", value: csp },
 ];
 

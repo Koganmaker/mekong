@@ -13,25 +13,30 @@ export function Gallery() {
   return (
     <section id="galerie" className="relative pt-2 md:pt-4 pb-16 md:pb-24 px-5 md:px-10">
       <div className="max-w-[1200px] mx-auto">
-        <div className="mb-12 md:mb-16 flex items-end justify-between gap-6 flex-wrap">
+        <div
+          className="mb-12 md:mb-16 flex items-end justify-between gap-6 flex-wrap"
+          data-reveal
+        >
           <div>
             <span className="text-xs uppercase tracking-[0.2em] text-cream-dim">
               En cuisine
             </span>
-            <h2 className="font-serif text-[clamp(36px,5.5vw,68px)] leading-[1] tracking-[-0.02em] mt-4">
-              Quelques <em className="text-red-glow font-medium italic">plats</em>.
+            <h2 className="font-serif text-[clamp(32px,5vw,60px)] leading-[1] tracking-[-0.02em] mt-4">
+              Quelques <em className="text-cream font-medium italic">plats</em>
             </h2>
           </div>
           <p className="text-cream-dim text-sm md:text-base max-w-md">
             Les vraies photos, prises sur place. Pas de stock, pas de retouche
-            qui ment.
+            qui ment
           </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
-          {photos.map((p) => (
+          {photos.map((p, i) => (
             <figure
               key={p.src}
+              data-reveal
+              style={{ "--reveal-delay": `${i * 70}ms` } as React.CSSProperties}
               className="group relative aspect-[4/5] overflow-hidden rounded-xl border border-glass-border"
             >
               <img
